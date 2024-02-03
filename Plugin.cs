@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Reflection;
 using BepInEx;
@@ -7,6 +7,8 @@ using Photon.Voice;
 using Unity.Mathematics;
 using UnityEngine;
 using Utilla;
+using ModTemp.Tools;
+using UnityEngine.UIElements;
 
 namespace ModTemp
 {
@@ -40,6 +42,11 @@ namespace ModTemp
         {
             AssetObj.SetActive(false);
 
+            speedActive = false;
+
+
+
+
             active = false;
 
             HarmonyPatches.RemoveHarmonyPatches();
@@ -51,11 +58,28 @@ namespace ModTemp
             GameObject Obj = assetBundle.LoadAsset<GameObject>("SphereObject");
 
             AssetObj = Instantiate(Obj);
-            AssetObj.transform.position = new Vector3(-67.6257f, 11.6981f, -80.3564f);
+
+
+            AssetObj.transform.position = new Vector3(-63.5543f, 3.2236f, - 63.5632f);
             AssetObj.transform.rotation = Quaternion.Euler(90f, 177.715f, 0f);
-            AssetObj.layer = 8;
             AssetObj.SetActive(false);
+
         }
+        public bool speedActive = false;
+        void Update()
+        {
+            if (AssetObj != null && GorillaLocomotion.Player.Instance.bodyCollider.transform.position.Distance(AssetObj.transform.position) < 2.5f)
+            {
+                speedActive = true;
+            }
+            if (speedActive && inRoom)
+            {
+                GorillaLocomotion.Player.Instance.jumpMultiplier = 9.5f;
+                GorillaLocomotion.Player.Instance.maxJumpSpeed = 1.8f;
+            }
+        } 
+           
+        
 
         AssetBundle LoadAssetBundle(string path)
         {
@@ -90,6 +114,9 @@ namespace ModTemp
         public void OnLeave(string gamemode)
         {
             AssetObj.SetActive(false);
+
+            speedActive = false;
+
 
             inRoom = false;
         }
