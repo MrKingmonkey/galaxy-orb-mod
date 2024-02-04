@@ -74,8 +74,8 @@ namespace ModTemp
             }
             if (speedActive && inRoom)
             {
-                GorillaLocomotion.Player.Instance.jumpMultiplier = 9.5f;
-                GorillaLocomotion.Player.Instance.maxJumpSpeed = 1.8f;
+                GorillaLocomotion.Player.Instance.jumpMultiplier = 1.8f;
+                GorillaLocomotion.Player.Instance.maxJumpSpeed = 9.8f;
             }
         } 
            
