@@ -68,7 +68,7 @@ namespace ModTemp
         public bool speedActive = false;
         void Update()
         {
-            if (AssetObj != null && GorillaLocomotion.Player.Instance.bodyCollider.transform.position.Distance(AssetObj.transform.position) < 2.5f)
+            if (AssetObj != null && GorillaLocomotion.Player.Instance.bodyCollider.transform.position.Distance(AssetObj.transform.position) < 5f)
             {
                 speedActive = true;
             }
