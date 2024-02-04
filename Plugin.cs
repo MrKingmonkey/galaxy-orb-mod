@@ -9,6 +9,7 @@ using UnityEngine;
 using Utilla;
 using ModTemp.Tools;
 using UnityEngine.UIElements;
+using Pathfinding;
 
 namespace ModTemp
 {
@@ -58,10 +59,8 @@ namespace ModTemp
             GameObject Obj = assetBundle.LoadAsset<GameObject>("SphereObject");
 
             AssetObj = Instantiate(Obj);
-
-
-            AssetObj.transform.position = new Vector3(-63.5543f, 3.2236f, - 63.5632f);
-            AssetObj.transform.rotation = Quaternion.Euler(90f, 177.715f, 0f);
+            AssetObj.transform.position = new Vector3(-63.5543f, 3.5055f, - 63.5632f);
+            AssetObj.transform.rotation = Quaternion.Euler(357.9869f, 177.7149f, - 0.0001f);
             AssetObj.SetActive(false);
 
         }
@@ -74,7 +73,8 @@ namespace ModTemp
             }
             if (speedActive && inRoom)
             {
-                GorillaLocomotion.Player.Instance.jumpMultiplier = 1.3f;
+      
+                GorillaLocomotion.Player.Instance.jumpMultiplier = 1.5f;
                 GorillaLocomotion.Player.Instance.maxJumpSpeed = 8.5f;
             }
         } 
